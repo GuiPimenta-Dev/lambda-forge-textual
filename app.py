@@ -2,11 +2,12 @@ from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer, Static
 from textual.containers import Container
 
+
 class LambdaForge(App):
     BINDINGS = [
-        ("s", "switch_to_server", "Go to Live Server"),
-        ("l", "switch_to_log", "Go to Live Log"),
-        ("t", "switch_to_trigger", "Go to Live Trigger"),
+        ("s", "switch_to_server", "Server"),
+        ("l", "switch_to_log", "Logs"),
+        ("t", "switch_to_trigger", "Triggers"),
     ]
 
     CSS = """
@@ -103,6 +104,7 @@ class LambdaForge(App):
                 view_element.remove_class("custom-live-log")
                 view_element.remove_class("custom-live-trigger")
         self.refresh()
+
 
 if __name__ == "__main__":
     LambdaForge().run()
