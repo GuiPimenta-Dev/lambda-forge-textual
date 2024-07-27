@@ -1,0 +1,10 @@
+Server {
+    layout: horizontal;
+    background: $boost;
+    height: 5;
+    margin: 4;
+    max-width: 200;
+    padding: 1;
+    content-align: center middle; 
+    align: center middle;
+}
