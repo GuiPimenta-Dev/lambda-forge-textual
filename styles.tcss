@@ -1,0 +1,43 @@
+Screen {
+    align: center top;
+    padding: 2;
+}
+
+Select, Input, Button {
+    width: 60;
+    margin: 2;    
+    padding: 1;
+}
+
+Label {
+    margin-top: 2;
+}
+
+TextArea {
+    width: 60;
+    height: 10;
+    margin: 2;    
+    padding: 1;
+}
+
+.Button {
+    width: 60;
+    margin: 2;
+    padding: 1;
+    background: #4CAF50;
+    color: white;
+    border: none;    
+}
+
+.Button:hover {
+    background: #45a049;
+}
+
+.result-label {
+    width: 60;
+    margin: 2;
+    padding: 1;
+    background: #ffffff;
+    border: solid;    
+    color: #333333;
+}

@@ -2,14 +2,15 @@ from textual.widgets import Static, RichLog
 from textual import events
 import asyncio
 
+
 class Logs(Static):
-    
+
     BINDINGS = [
         ("c", "clear", "Clear"),
     ]
-    
+
     def __init__(self, log_file: str, *args, **kwargs):
-        
+
         super().__init__(*args, **kwargs)
         self.log_file = log_file
         self._task = None
@@ -17,11 +18,11 @@ class Logs(Static):
 
     def compose(self):
         yield RichLog(highlight=True, markup=True)
-        
+
     async def tail_log(self):
         text_log = self.query_one(RichLog)
         with open(self.log_file, "r") as file:
-            file.seek(0, 2) 
+            file.seek(0, 2)
             while True:
                 line = file.readline()
                 if line:
