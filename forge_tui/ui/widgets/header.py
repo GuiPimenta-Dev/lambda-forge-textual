@@ -8,6 +8,7 @@ class ForgeHeader(Widget):
         title: str = "λ Lambda Forge",
         subtitle: str = "Simplify AWS Lambda deployments",
     ):
+        super().__init__()
         self.title = title
         self.subtitle = subtitle
 
