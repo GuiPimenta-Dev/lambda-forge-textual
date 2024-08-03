@@ -5,6 +5,17 @@ from textual.widgets import TabPane, TabbedContent
 from ..widgets import ForgeHeader, ServerTable, LogStream, Triggers
 
 
+class ForgeTabs(TabbedContent):
+    DEFAULT_CSS = """
+    ForgeTabs {
+        height: 100%;
+        &> ContentTabs {
+            dock: top;
+        }
+    }
+    """
+
+
 class IndexScreen(Screen):
     DEFAULT_CSS = """
     IndexScreen {
@@ -16,7 +27,7 @@ class IndexScreen(Screen):
 
     def compose(self) -> ComposeResult:
         yield ForgeHeader()
-        with TabbedContent():
+        with ForgeTabs(initial="server"):
 
             with TabPane("Server", id="server"):
                 yield ServerTable()
