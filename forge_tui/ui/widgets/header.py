@@ -3,6 +3,12 @@ from textual.widget import Widget
 
 
 class ForgeHeader(Widget):
+    DEFAULT_CSS = """
+    ForgeHeader {
+        padding: 1 4;
+    }
+    """
+
     def __init__(
         self,
         title: str = "λ Lambda Forge",
