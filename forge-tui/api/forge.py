@@ -1,0 +1,2 @@
+class Forge:
+    pass
