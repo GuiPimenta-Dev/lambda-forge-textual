@@ -9,6 +9,7 @@ class ApiGatewayContainer(TriggerBaseWidget):
         layout: grid;
         grid-size: 3 3;
         grid-rows: 5 10 auto;
+        grid-columns: 1fr 1fr 1fr;
     }
 
     ApiGatewayContainer > #url {
@@ -21,6 +22,7 @@ class ApiGatewayContainer(TriggerBaseWidget):
     def compose(self) -> ComposeResult:
         yield Select(options=[(i, i) for i in self.METHODS], id="method")
         yield Input(id="url")
+
         yield TextArea.code_editor(text="{}", language="json", id="query")
         yield TextArea.code_editor(text="{}", language="json", id="body")
         yield TextArea.code_editor(text="{}", language="json", id="headers")
