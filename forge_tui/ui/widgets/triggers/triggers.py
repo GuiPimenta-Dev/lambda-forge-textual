@@ -14,6 +14,9 @@ class Triggers(Static):
             with TabPane("Api Gateway", id="api_gateway"):
                 yield ApiGateway()
 
+            with TabPane("EventBridge", id="event_bridge"):
+                yield EventBridge()
+
             with TabPane("SNS", id="sns"):
                 yield SNS()
 
@@ -22,6 +25,3 @@ class Triggers(Static):
 
             with TabPane("S3", id="s3"):
                 yield S3()
-
-            with TabPane("EventBridge", id="event_bridge"):
-                yield EventBridge()
