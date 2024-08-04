@@ -1,5 +1,5 @@
 from pathlib import Path
-from textual.app import ComposeResult
+from textual.app import ComposeResult, on
 from textual.widget import Widget
 from textual.widgets import OptionList
 from textual.widgets.option_list import Option
@@ -9,8 +9,22 @@ class SingleLog(Option):
 
     tall = False
 
+    def __init__(
+        self, prompt: str, id: str | None = None, disabled: bool = False
+    ) -> None:
+        super().__init__(prompt, id, disabled)
+        self.default_prompt = prompt
+        self.refresh_prompt()
+
+    def refresh_prompt(self):
+        if not self.tall:
+            self.set_prompt(self.default_prompt[:10])
+        else:
+            self.set_prompt(self.default_prompt)
+
     def toggle_display(self):
         self.tall = not self.tall
+        self.refresh_prompt()
 
 
 class LogStream(Widget):
@@ -35,3 +49,17 @@ class LogStream(Widget):
         with open(self.log_path, "r") as f:
             for line in f.readlines():
                 self.log_list.add_option(SingleLog(line.strip()))
+
+    @on(OptionList.OptionSelected)
+    def toggle_display(self, event: OptionList.OptionSelected):
+        if not isinstance(event.option, SingleLog):
+            return
+
+        for option in self.log_list._options:
+            if option == event.option:
+                option.toggle_display()
+            else:
+                option.tall = False
+            option.refresh_prompt()
+
+        self.log_list._refresh_lines()
