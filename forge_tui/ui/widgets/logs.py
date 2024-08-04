@@ -18,16 +18,24 @@ class SingleLog(Option):
         self.refresh_prompt()
 
     def refresh_prompt(self):
-        if not self.tall:
-            self.set_prompt(self.default_prompt[:10])
-        else:
-            try:
-                json_string = self.default_prompt
-                data = json.loads(json_string)
+        try:
+            json_string = self.default_prompt
+            data = json.loads(json_string)
+            if not self.tall:
+                method = data["httpMethod"]
+                resource = data["resource"]
+                path = data["path"]
+                self.set_prompt(f"{method} {resource} {path}")
+            else:
                 formatted_json_string = json.dumps(data, indent=4)
                 self.set_prompt(formatted_json_string)
-            except:
-                self.set_prompt(self.default_prompt)
+
+        except:
+            data = self.default_prompt
+            if not self.tall:
+                self.set_prompt(data[:10])
+            else:
+                self.set_prompt(data)
 
     def toggle_display(self):
         self.tall = not self.tall
