@@ -9,8 +9,12 @@ class ResultWindow(Widget):
         layout: grid;
         grid-size: 1 2;
     }
+
+    ResultWindow > OptionList, Static {
+        height: 100%;
+    }
     """
 
     def compose(self) -> ComposeResult:
         yield OptionList()
-        yield Static()
+        yield Static("No results")
