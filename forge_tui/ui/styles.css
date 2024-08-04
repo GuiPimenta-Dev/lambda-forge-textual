@@ -1,0 +1,22 @@
+$black1: #0E1116;
+$black2: #171C24;
+
+$white1: #E5E1EE;
+$white2: #D8D2E6;
+
+$red: #C81D25;
+$yellow: #FDCA0E;
+$pink: #F55EAD;
+$cyan: #25AABF;
+$blue: #1A6DAF;
+$green: #99E1D9;
+
+
+LogStream {
+
+  .log-method-get {
+    background: $green;
+    color: $black1;
+  }
+
+}
