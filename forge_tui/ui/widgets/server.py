@@ -15,10 +15,6 @@ class ServerTable(Widget):
     ServerTable {
         height: auto;
     }
-
-    ServerTable > DataTable {
-        width: 50;
-    }
     """
 
     COLUMNS = ["Name", "Service", "Type", "Trigger"]
