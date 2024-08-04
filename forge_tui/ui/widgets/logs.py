@@ -56,6 +56,9 @@ class LogStream(Widget):
             return
 
         for option in self.log_list._options:
+            if not isinstance(option, SingleLog):
+                continue
+
             if option == event.option:
                 option.toggle_display()
             else:
