@@ -1,19 +1,10 @@
 from textual.app import ComposeResult
 from textual.screen import Screen
 from textual.widgets import TabPane, TabbedContent
-
+from forge_tui.api import Forge
 from ..widgets import ForgeHeader, ServerTable, LogStream, Triggers
 
-
-class ForgeTabs(TabbedContent):
-    DEFAULT_CSS = """
-    ForgeTabs {
-        height: 100%;
-        &> ContentTabs {
-            dock: top;
-        }
-    }
-    """
+forge = Forge()
 
 
 class IndexScreen(Screen):
@@ -27,13 +18,13 @@ class IndexScreen(Screen):
 
     def compose(self) -> ComposeResult:
         yield ForgeHeader()
-        with ForgeTabs(initial="server"):
+        with TabbedContent(initial="server"):
 
             with TabPane("Server", id="server"):
                 yield ServerTable()
 
             with TabPane("Logs", id="logs"):
-                yield LogStream()
+                yield LogStream(forge.get_log_path())
 
             with TabPane("Triggers", id="triggers"):
                 yield Triggers()
