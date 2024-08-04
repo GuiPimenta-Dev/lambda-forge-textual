@@ -8,7 +8,7 @@ class TriggerBaseWidget(Static):
     TriggerBaseWidget {
         layout: grid;
         grid-size: 2;
-        grid-columns: 4fr 1fr;
+        grid-columns: 5fr 2fr;
     }
     """
 
