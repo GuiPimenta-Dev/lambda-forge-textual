@@ -8,6 +8,7 @@ class ResultWindow(Widget):
     ResultWindow {
         layout: grid;
         grid-size: 1 2;
+        border: tall $primary;
     }
 
     ResultWindow > OptionList, Static {
