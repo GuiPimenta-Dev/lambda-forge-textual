@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import List, Optional
 
 
@@ -19,3 +20,6 @@ class Forge:
             ),
         ]
         return ROWS
+
+    def get_log_path(self) -> Path:
+        return Path(__file__).parent.parent.parent / "old" / "live.log"
