@@ -4,6 +4,12 @@ from textual.widget import Widget
 
 
 class ServerTable(Widget):
+    DEFAULT_CSS = """
+    ServerTable {
+        height: auto;
+    }
+    """
+
     COLUMNS = ["Name", "Service", "Type", "Trigger"]
 
     @property
