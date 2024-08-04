@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from textual.app import ComposeResult, on
 from textual.widget import Widget
@@ -20,7 +21,13 @@ class SingleLog(Option):
         if not self.tall:
             self.set_prompt(self.default_prompt[:10])
         else:
-            self.set_prompt(self.default_prompt)
+            try:
+                json_string = self.default_prompt
+                data = json.loads(json_string)
+                formatted_json_string = json.dumps(data, indent=4)
+                self.set_prompt(formatted_json_string)
+            except:
+                self.set_prompt(self.default_prompt)
 
     def toggle_display(self):
         self.tall = not self.tall
