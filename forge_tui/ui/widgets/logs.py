@@ -1,5 +1,8 @@
+from collections.abc import Callable
 import json
 from pathlib import Path
+from rich.text import Text
+from rich.style import Style
 from textual.app import ComposeResult, on
 from textual.widget import Widget
 from textual.widgets import OptionList
@@ -11,10 +14,15 @@ class SingleLog(Option):
     tall = False
 
     def __init__(
-        self, prompt: str, id: str | None = None, disabled: bool = False
+        self,
+        prompt: str,
+        get_rich_style: Callable[[str], Style],
+        id: str | None = None,
+        disabled: bool = False,
     ) -> None:
         super().__init__(prompt, id, disabled)
         self.default_prompt = prompt
+        self.get_rich_style = get_rich_style
         self.refresh_prompt()
 
     def refresh_prompt(self):
@@ -25,10 +33,25 @@ class SingleLog(Option):
                 method = data["httpMethod"]
                 resource = data["resource"]
                 path = data["path"]
-                self.set_prompt(f"{method} {resource} {path}")
+
+                method = Text(method, style="b green")
+                method.pad(1)
+
+                resource = (
+                    Text() + Text(" resource:", style="dim white") + Text(resource)
+                )
+                resource.pad(1)
+
+                path = Text() + Text(" path:", style="dim white") + Text(path)
+                path.pad(1)
+
+                text = Text() + method + resource + path
+
             else:
                 formatted_json_string = json.dumps(data, indent=4)
-                self.set_prompt(formatted_json_string)
+                text = Text(formatted_json_string)
+
+            self.set_prompt(text)
 
         except:
             data = self.default_prompt
@@ -49,6 +72,8 @@ class LogStream(Widget):
     }
     """
 
+    COMPONENT_CLASSES = {"log-method-get"}
+
     def __init__(self, log_path: Path):
         super().__init__()
         self.log_path = log_path
@@ -63,7 +88,9 @@ class LogStream(Widget):
     def on_mount(self):
         with open(self.log_path, "r") as f:
             for line in f.readlines():
-                self.log_list.add_option(SingleLog(line.strip()))
+                self.log_list.add_option(
+                    SingleLog(line.strip(), self.get_component_rich_style)
+                )
 
     @on(OptionList.OptionSelected)
     def toggle_display(self, event: OptionList.OptionSelected):
