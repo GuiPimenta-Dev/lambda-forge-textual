@@ -1,5 +1,5 @@
 from textual.widget import Widget
 
 
-class TriggerBase(Widget):
+class TriggerBaseWidget(Widget):
     pass
