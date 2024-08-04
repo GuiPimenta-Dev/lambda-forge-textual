@@ -1,5 +1,20 @@
+from textual.app import ComposeResult
 from textual.widgets import Static
+from ._result_window import ResultWindow
 
 
 class TriggerBaseWidget(Static):
-    pass
+    DEFAULT_CSS = """
+    TriggerBaseWidget {
+        layout: grid;
+        grid-size: 2;
+        grid-columns: 4fr 1fr;
+    }
+    """
+
+    def render_left(self) -> ComposeResult:
+        yield from []
+
+    def compose(self) -> ComposeResult:
+        yield from self.render_left()
+        yield ResultWindow()

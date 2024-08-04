@@ -3,15 +3,15 @@ from textual.widgets import Input, Select, TextArea
 from ._base import TriggerBaseWidget
 
 
-class ApiGateway(TriggerBaseWidget):
+class ApiGatewayContainer(TriggerBaseWidget):
     DEFAULT_CSS = """
-    ApiGateway {
+    ApiGatewayContainer {
         layout: grid;
         grid-size: 3 3;
         grid-rows: 5 10 auto;
     }
 
-    ApiGateway > #url {
+    ApiGatewayContainer > #url {
         column-span: 2;
     }
     """
@@ -24,3 +24,8 @@ class ApiGateway(TriggerBaseWidget):
         yield TextArea.code_editor(text="{}", language="json", id="query")
         yield TextArea.code_editor(text="{}", language="json", id="body")
         yield TextArea.code_editor(text="{}", language="json", id="headers")
+
+
+class ApiGateway(TriggerBaseWidget):
+    def render_left(self) -> ComposeResult:
+        yield ApiGatewayContainer()
