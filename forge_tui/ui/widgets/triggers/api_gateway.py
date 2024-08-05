@@ -7,8 +7,8 @@ class ApiGatewayContainer(TriggerBaseContainer):
     DEFAULT_CSS = """
     ApiGatewayContainer {
         layout: grid;
-        grid-size: 3 3;
-        grid-rows: 5 10 auto;
+        grid-size: 3 2;
+        grid-rows: 5 10;
         grid-columns: 1fr 1fr 1fr;
     }
 

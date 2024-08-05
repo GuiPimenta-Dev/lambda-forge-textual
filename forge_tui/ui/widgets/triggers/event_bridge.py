@@ -7,8 +7,8 @@ class EventBridgeContainer(TriggerBaseContainer):
     DEFAULT_CSS = """
     EventBridgeContainer {
         layout: grid;
-        grid-size: 1 3;
-        grid-rows: 5 10 auto;
+        grid-size: 1 2;
+        grid-rows: 5 10;
     }
     """
 

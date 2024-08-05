@@ -7,8 +7,8 @@ class SNSContainer(TriggerBaseContainer):
     DEFAULT_CSS = """
     SNSContainer {
         layout: grid;
-        grid-size: 2 3;
-        grid-rows: 5 10 auto;
+        grid-size: 2 2;
+        grid-rows: 5 10;
         grid-columns: 1fr 1fr;
 
         Input {

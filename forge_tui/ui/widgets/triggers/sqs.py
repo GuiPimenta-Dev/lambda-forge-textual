@@ -7,8 +7,8 @@ class SQSContainer(TriggerBaseContainer):
     DEFAULT_CSS = """
     SQSContainer {
         layout: grid;
-        grid-size: 1 3;
-        grid-rows: 5 10 auto;
+        grid-size: 1 2;
+        grid-rows: 5 10;
         grid-columns: 1fr 1fr;
     }
     """
