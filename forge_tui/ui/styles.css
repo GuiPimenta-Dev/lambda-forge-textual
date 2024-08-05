@@ -22,10 +22,10 @@ ForgeHeader {
   background: $background;
 
   .title {
-    color: $accent;
+    color: white;
   }
 
   .subtitle {
-    color: $accent-lighten-3 50%;
+    color: grey;
   }
 }
