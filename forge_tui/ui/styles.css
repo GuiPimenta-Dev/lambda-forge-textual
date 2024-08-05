@@ -35,3 +35,8 @@ OptionList {
         background: $surface;
     }
 }
+
+
+* {
+  scrollbar-size: 0 1;
+}
