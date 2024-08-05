@@ -3,6 +3,7 @@ from textual.app import ComposeResult
 from textual.widget import Widget
 from textual.widgets import Input, Select, Static, TextArea
 from ._result_window import ResultWindow
+from ._trigger_submit import TriggerSubmit
 
 
 class TriggerBaseContainer(Widget):
@@ -13,9 +14,13 @@ class TriggerBaseWidget(Static):
     DEFAULT_CSS = """
     TriggerBaseWidget {
         layout: grid;
-        grid-size: 2;
+        grid-size: 2 2;
         grid-columns: 5fr 2fr;
         height: 1fr;
+    }
+
+    TriggerBaseWidget > ResultWindow {
+        row-span: 2;
     }
     """
 
@@ -43,3 +48,4 @@ class TriggerBaseWidget(Static):
     def compose(self) -> ComposeResult:
         yield from self.render_left()
         yield ResultWindow()
+        yield TriggerSubmit()
