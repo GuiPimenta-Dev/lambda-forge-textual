@@ -8,7 +8,6 @@ class ResultWindow(Widget):
     ResultWindow {
         layout: grid;
         grid-size: 1 2;
-        border: tall $primary;
     }
 
     ResultWindow > OptionList, Static {
@@ -18,4 +17,4 @@ class ResultWindow(Widget):
 
     def compose(self) -> ComposeResult:
         yield OptionList()
-        yield Static("No results")
+        yield Static()
