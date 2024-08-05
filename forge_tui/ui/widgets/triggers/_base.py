@@ -1,4 +1,5 @@
 from typing import Dict
+from rich.text import Text
 from textual.app import ComposeResult, on
 from textual.widget import Widget
 from textual.widgets import Input, Select, Static, TextArea
@@ -30,6 +31,22 @@ class TriggerBaseWidget(Static):
     } 
     """
 
+    @property
+    def container_widget(self) -> TriggerBaseContainer:
+        if not self.parent:
+            raise ValueError("Parent not set")
+
+        return self.parent.query_one(TriggerBaseContainer)
+
+    def on_mount(self) -> None:
+        for i in self.container_widget.children:
+            if not i.id:
+                continue
+
+            i.border_title = i.id
+            i.border_title_align = "center"
+
+
     def render_left(self) -> ComposeResult:
         yield from []
 
@@ -38,9 +55,8 @@ class TriggerBaseWidget(Static):
             return {}
 
         data = {}
-        container_widget = self.parent.query_one(TriggerBaseContainer)
 
-        for widget in container_widget.children:
+        for widget in self.container_widget.children:
             if not widget.id:
                 continue
 
