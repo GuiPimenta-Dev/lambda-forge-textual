@@ -1,7 +1,9 @@
 from collections.abc import Callable
 import json
+from rich import box
+from rich.panel import Panel
 from pathlib import Path
-from rich.text import Text
+from rich.text import Text, TextType
 from rich.style import Style
 from textual.app import ComposeResult, on
 from textual.widget import Widget
@@ -51,14 +53,21 @@ class SingleLog(Option):
                 formatted_json_string = json.dumps(data, indent=4)
                 text = Text(formatted_json_string)
 
-            self.set_prompt(text)
+            self._set_prompt(text)
 
         except:
             data = self.default_prompt
             if not self.tall:
-                self.set_prompt(data[:10])
+                self._set_prompt(data[:10])
             else:
-                self.set_prompt(data)
+                self._set_prompt(data)
+
+    def _set_prompt(self, prompt: TextType):
+
+        if isinstance(prompt, str):
+            prompt = Text(prompt)
+
+        self.set_prompt(Panel(prompt, box=box.ROUNDED))
 
     def toggle_display(self):
         self.tall = not self.tall
