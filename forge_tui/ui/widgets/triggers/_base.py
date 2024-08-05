@@ -19,9 +19,15 @@ class TriggerBaseWidget(Static):
         height: 1fr;
     }
 
-    TriggerBaseWidget > ResultWindow {
-        row-span: 2;
-    }
+    TriggerBaseWidget {
+        ResultWindow {
+            row-span: 2;
+        }
+
+        TriggerSubmit {
+            dock: bottom;
+        }
+    } 
     """
 
     def render_left(self) -> ComposeResult:
