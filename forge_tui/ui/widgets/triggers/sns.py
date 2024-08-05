@@ -1,10 +1,9 @@
 from textual.app import ComposeResult
-from textual.widget import Widget
 from textual.widgets import Input, TextArea
-from ._base import TriggerBaseWidget
+from ._base import TriggerBaseWidget, TriggerBaseContainer
 
 
-class SNSContainer(Widget):
+class SNSContainer(TriggerBaseContainer):
     DEFAULT_CSS = """
     SNSContainer {
         layout: grid;

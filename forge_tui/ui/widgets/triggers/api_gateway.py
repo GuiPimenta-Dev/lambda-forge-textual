@@ -1,9 +1,9 @@
 from textual.app import ComposeResult
 from textual.widgets import Input, Select, TextArea
-from ._base import TriggerBaseWidget
+from ._base import TriggerBaseWidget, TriggerBaseContainer
 
 
-class ApiGatewayContainer(TriggerBaseWidget):
+class ApiGatewayContainer(TriggerBaseContainer):
     DEFAULT_CSS = """
     ApiGatewayContainer {
         layout: grid;

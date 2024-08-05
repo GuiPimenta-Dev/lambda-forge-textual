@@ -1,10 +1,9 @@
 from textual.app import ComposeResult
-from textual.widget import Widget
 from textual.widgets import Input, TextArea
-from ._base import TriggerBaseWidget
+from ._base import TriggerBaseWidget, TriggerBaseContainer
 
 
-class S3Container(Widget):
+class S3Container(TriggerBaseContainer):
     DEFAULT_CSS = """
     S3Container {
         layout: grid;

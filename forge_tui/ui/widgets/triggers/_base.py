@@ -1,7 +1,12 @@
 from typing import Dict
 from textual.app import ComposeResult
+from textual.widget import Widget
 from textual.widgets import Input, Select, Static, TextArea
 from ._result_window import ResultWindow
+
+
+class TriggerBaseContainer(Widget):
+    pass
 
 
 class TriggerBaseWidget(Static):
