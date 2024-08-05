@@ -1,5 +1,4 @@
 from typing import Dict
-from rich.text import Text
 from textual.app import ComposeResult, on
 from textual.widget import Widget
 from textual.widgets import Input, Select, Static, TextArea
@@ -15,8 +14,9 @@ class TriggerBaseWidget(Static):
     DEFAULT_CSS = """
     TriggerBaseWidget {
         layout: grid;
-        grid-size: 2 1;
+        grid-size: 2 2;
         grid-columns: 5fr 2fr;
+        grid-rows: 1fr 3;
         height: 1fr;
     }
 
@@ -26,7 +26,9 @@ class TriggerBaseWidget(Static):
         }
 
         TriggerSubmit {
-            dock: bottom;
+            margin-left: 1;
+            margin-right: 1;
+            width: 100%;
         }
     } 
     """
@@ -45,7 +47,6 @@ class TriggerBaseWidget(Static):
 
             i.border_title = i.id
             i.border_title_align = "center"
-
 
     def render_left(self) -> ComposeResult:
         yield from []
