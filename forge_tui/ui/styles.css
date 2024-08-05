@@ -38,6 +38,7 @@ OptionList {
 
 ResultWindow {
   background: $background;
+  border: tall $accent;
   
   OptionList:focus {
     border: tall $background;
