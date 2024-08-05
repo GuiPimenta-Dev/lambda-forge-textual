@@ -36,6 +36,13 @@ OptionList {
     }
 }
 
+ResultWindow {
+  background: $background;
+  
+  OptionList:focus {
+    border: tall $background;
+  }
+}
 
 * {
   scrollbar-size: 0 1;
