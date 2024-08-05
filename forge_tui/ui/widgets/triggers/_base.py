@@ -1,5 +1,5 @@
 from typing import Dict
-from textual.app import ComposeResult
+from textual.app import ComposeResult, on
 from textual.widget import Widget
 from textual.widgets import Input, Select, Static, TextArea
 from ._result_window import ResultWindow
@@ -34,9 +34,13 @@ class TriggerBaseWidget(Static):
         yield from []
 
     def get_input_values(self) -> Dict:
-        data = {}
+        if not self.parent:
+            return {}
 
-        for widget in self.children:
+        data = {}
+        container_widget = self.parent.query_one(TriggerBaseContainer)
+
+        for widget in container_widget.children:
             if not widget.id:
                 continue
 
@@ -50,6 +54,11 @@ class TriggerBaseWidget(Static):
                 data[_id] = widget.value
 
         return data
+
+    @on(TriggerSubmit.Pressed)
+    def run_trigger(self, event: TriggerSubmit.Pressed):
+        data = self.get_input_values()
+        self.notify(str(data))
 
     def compose(self) -> ComposeResult:
         yield from self.render_left()
