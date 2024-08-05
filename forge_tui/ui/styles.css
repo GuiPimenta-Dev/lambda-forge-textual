@@ -17,3 +17,15 @@ Input, Select, TextArea {
   border-title-color: white;
   border-title-background: $accent;
 }
+
+ForgeHeader {
+  background: $background;
+
+  .title {
+    color: $accent;
+  }
+
+  .subtitle {
+    color: $accent-lighten-3 50%;
+  }
+}

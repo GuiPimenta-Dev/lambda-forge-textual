@@ -9,6 +9,8 @@ class ForgeHeader(Widget):
     }
     """
 
+    COMPONENT_CLASSES = {"title", "subtitle"}
+
     def __init__(
         self,
         title: str = "λ Lambda Forge",
@@ -19,7 +21,7 @@ class ForgeHeader(Widget):
         self.subtitle = subtitle
 
     def render(self):
-        title = Text(self.title, style="bold")
-        subtitle = Text(self.subtitle, style="dim")
+        title = Text(self.title, style=self.get_component_rich_style("title"))
+        subtitle = Text(self.subtitle, style=self.get_component_rich_style("subtitle"))
 
         return title + "\n" + subtitle
