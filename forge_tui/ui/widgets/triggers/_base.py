@@ -14,7 +14,7 @@ class TriggerBaseWidget(Static):
     DEFAULT_CSS = """
     TriggerBaseWidget {
         layout: grid;
-        grid-size: 2 2;
+        grid-size: 2 1;
         grid-columns: 5fr 2fr;
         height: 1fr;
     }
