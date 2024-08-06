@@ -1,3 +1,4 @@
+from rich.text import Text
 from textual.app import ComposeResult, on
 from textual.widget import Widget
 from textual.widgets import Button, OptionList
@@ -6,8 +7,13 @@ from textual.widgets.option_list import Option
 
 class RunHistoryItem(Option):
     def __init__(self, history):
-        super().__init__(str(history))
         self.history = history
+        formatted = Text()
+
+        for key, value in history.items():
+            formatted += Text() + Text(f"{key}: ") + Text(str(value)) + Text("\n")
+
+        super().__init__(formatted)
 
     def __str__(self) -> str:
         return str(self.history)
