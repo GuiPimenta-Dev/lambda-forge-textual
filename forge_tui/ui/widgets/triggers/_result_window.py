@@ -47,7 +47,9 @@ class ResultWindow(Widget):
         self.history_list.add_option(RunHistoryItem(history))
 
     @on(RunHistoryBtn.Pressed)
-    def run_history(self):
+    def run_history(self, event: RunHistoryBtn.Pressed):
+        event.stop()
+
         highlighted = self.history_list.highlighted
         if not highlighted:
             self.notify("no history selected")
