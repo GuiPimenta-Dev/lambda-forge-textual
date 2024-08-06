@@ -13,9 +13,11 @@ class LoadingScreen(Screen):
 
     @work(thread=True)
     async def init_forge(self):
-        from time import sleep
 
-        sleep(2)
+        # TODO: Your code here
+        # from time import sleep
+        # sleep(2)
+
         self.is_syntesis_complete = True
 
     def check_for_synthesis(self):
