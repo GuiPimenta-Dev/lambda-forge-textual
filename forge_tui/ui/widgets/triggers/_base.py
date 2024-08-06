@@ -16,7 +16,7 @@ class TriggerBaseWidget(Static):
         layout: grid;
         grid-size: 2 2;
         grid-columns: 5fr 2fr;
-        grid-rows: 1fr 3;
+        grid-rows: 1fr 4;
         height: 1fr;
     }
 
@@ -26,6 +26,7 @@ class TriggerBaseWidget(Static):
         }
 
         TriggerSubmit {
+            margin-top: 1;
             margin-left: 1;
             margin-right: 1;
             width: 100%;
