@@ -1,5 +1,6 @@
 from collections.abc import Callable
 import json
+from typing import Optional
 from rich import box
 from rich.panel import Panel
 from pathlib import Path
@@ -8,7 +9,7 @@ from rich.style import Style
 from textual.app import ComposeResult, on
 from textual.binding import Binding
 from textual.widget import Widget
-from textual.widgets import Footer, OptionList
+from textual.widgets import OptionList
 from textual.widgets.option_list import Option
 
 
@@ -20,7 +21,7 @@ class SingleLog(Option):
         self,
         prompt: str,
         get_rich_style: Callable[[str], Style],
-        id: str | None = None,
+        id: Optional[str] = None,
         disabled: bool = False,
     ) -> None:
         super().__init__(prompt, id, disabled)
