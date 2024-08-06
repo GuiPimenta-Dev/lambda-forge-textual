@@ -9,7 +9,7 @@ class LoadingScreen(Screen):
     async def on_mount(self):
         self.is_syntesis_complete = False
         self.init_forge()
-        self.set_interval(0.1, self.check_for_synthesis)
+        self.synth_check_timer = self.set_interval(0.5, self.check_for_synthesis)
 
     @work(thread=True)
     async def init_forge(self):
@@ -22,6 +22,7 @@ class LoadingScreen(Screen):
 
     def check_for_synthesis(self):
         if self.is_syntesis_complete:
+            self.synth_check_timer.stop()
             self.dismiss_screen()
 
     def dismiss_screen(self):
