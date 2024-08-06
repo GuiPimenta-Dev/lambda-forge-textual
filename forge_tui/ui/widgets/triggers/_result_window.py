@@ -51,7 +51,7 @@ class ResultWindow(Widget):
         event.stop()
 
         highlighted = self.history_list.highlighted
-        if not highlighted:
+        if highlighted is None:
             self.notify("no history selected")
             return
 
