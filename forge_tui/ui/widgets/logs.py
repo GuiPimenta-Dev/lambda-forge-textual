@@ -93,7 +93,6 @@ class LogStream(Widget):
 
     def compose(self) -> ComposeResult:
         yield OptionList()
-        yield Footer()
 
     @property
     def log_list(self) -> OptionList:

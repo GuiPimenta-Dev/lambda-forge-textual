@@ -1,6 +1,7 @@
 from textual.app import ComposeResult
+from textual.binding import Binding
 from textual.screen import Screen
-from textual.widgets import TabPane, TabbedContent
+from textual.widgets import Footer, TabPane, TabbedContent
 from forge_tui.api import Forge
 from ..widgets import ForgeHeader, ServerTable, LogStream, Triggers
 
@@ -11,14 +12,24 @@ class IndexScreen(Screen):
     DEFAULT_CSS = """
     IndexScreen {
         layout: grid;
-        grid-size: 1 2;
-        grid-rows: 4 1fr;
+        grid-size: 1 3;
+        grid-rows: 4 1fr 1;
     }
     """
 
+    BINDINGS = [
+        Binding("s", "move_to_tab('server')", "Server"),
+        Binding("l", "move_to_tab('logs')", "Server"),
+        Binding("t", "move_to_tab('triggers')", "Server"),
+    ]
+
+    def action_move_to_tab(self, tab: str):
+        self.tabbed_container.active = tab
+
     def compose(self) -> ComposeResult:
         yield ForgeHeader()
-        with TabbedContent(initial="server"):
+        with TabbedContent(initial="server") as t:
+            self.tabbed_container = t
 
             with TabPane("Server", id="server"):
                 yield ServerTable()
@@ -28,3 +39,5 @@ class IndexScreen(Screen):
 
             with TabPane("Triggers", id="triggers"):
                 yield Triggers()
+
+        yield Footer()
