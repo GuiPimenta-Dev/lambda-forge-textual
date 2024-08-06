@@ -2,3 +2,5 @@
 Lib/
 Scripts/
 venv/
+**/__pycache__/
+.venv
