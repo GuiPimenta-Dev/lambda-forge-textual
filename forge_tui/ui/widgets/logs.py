@@ -6,8 +6,9 @@ from pathlib import Path
 from rich.text import Text, TextType
 from rich.style import Style
 from textual.app import ComposeResult, on
+from textual.binding import Binding
 from textual.widget import Widget
-from textual.widgets import OptionList
+from textual.widgets import Footer, OptionList
 from textual.widgets.option_list import Option
 
 
@@ -82,6 +83,9 @@ class LogStream(Widget):
     """
 
     COMPONENT_CLASSES = {"log-method-get"}
+    BINDINGS = [
+        Binding("c", "clear_logs", "Clear logs"),
+    ]
 
     def __init__(self, log_path: Path):
         super().__init__()
@@ -89,12 +93,13 @@ class LogStream(Widget):
 
     def compose(self) -> ComposeResult:
         yield OptionList()
+        yield Footer()
 
     @property
     def log_list(self) -> OptionList:
         return self.query_one(OptionList)
 
-    def on_mount(self):
+    async def on_mount(self):
         with open(self.log_path, "r") as f:
             for line in f.readlines():
                 self.log_list.add_option(
@@ -117,3 +122,6 @@ class LogStream(Widget):
             option.refresh_prompt()
 
         self.log_list._refresh_lines()
+
+    def action_clear_logs(self):
+        self.log_list.clear_options()
