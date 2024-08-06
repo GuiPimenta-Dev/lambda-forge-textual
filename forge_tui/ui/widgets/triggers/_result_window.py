@@ -1,3 +1,4 @@
+from rich.panel import Panel
 from rich.text import Text
 from textual.app import ComposeResult, on
 from textual.widget import Widget
@@ -13,7 +14,7 @@ class RunHistoryItem(Option):
         for key, value in history.items():
             formatted += Text() + Text(f"{key}: ") + Text(str(value)) + Text("\n")
 
-        super().__init__(formatted)
+        super().__init__(Panel(formatted))
 
     def __str__(self) -> str:
         return str(self.history)
