@@ -1,6 +1,6 @@
-from textual.app import ComposeResult
+from textual.app import ComposeResult, on
 from textual.widget import Widget
-from textual.widgets import OptionList, Static
+from textual.widgets import Button, OptionList
 from textual.widgets.option_list import Option
 
 
@@ -9,15 +9,23 @@ class RunHistoryItem(Option):
         super().__init__(str(history))
         self.history = history
 
+    def __str__(self) -> str:
+        return str(self.history)
+
+
+class RunHistoryBtn(Button):
+    pass
+
 
 class ResultWindow(Widget):
     DEFAULT_CSS = """
     ResultWindow {
         layout: grid;
         grid-size: 1 2;
+        grid-rows: 1fr 3;
     }
 
-    ResultWindow > OptionList, Static {
+    ResultWindow > OptionList {
         height: 100%;
     }
     """
@@ -28,7 +36,17 @@ class ResultWindow(Widget):
 
     def compose(self) -> ComposeResult:
         yield OptionList()
-        yield Static()
+        yield RunHistoryBtn("Run History")
 
     def add_history(self, history):
         self.history_list.add_option(RunHistoryItem(history))
+
+    @on(RunHistoryBtn.Pressed)
+    def run_history(self):
+        highlighted = self.history_list.highlighted
+        if not highlighted:
+            self.notify("no history selected")
+            return
+
+        history = self.history_list.get_option_at_index(highlighted)
+        self.notify(f"running {history}")
