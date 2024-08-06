@@ -14,7 +14,12 @@ class RunHistoryItem(Option):
 
 
 class RunHistoryBtn(Button):
-    pass
+    DEFAULT_CSS = """
+    RunHistoryBtn {
+        margin: 1;
+        width: 100%;
+    }
+    """
 
 
 class ResultWindow(Widget):
@@ -22,7 +27,7 @@ class ResultWindow(Widget):
     ResultWindow {
         layout: grid;
         grid-size: 1 2;
-        grid-rows: 1fr 3;
+        grid-rows: 1fr 5;
     }
 
     ResultWindow > OptionList {
