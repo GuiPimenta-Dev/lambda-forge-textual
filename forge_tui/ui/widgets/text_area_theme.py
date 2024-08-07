@@ -4,8 +4,8 @@ from textual.widgets import TextArea
 
 nord_theme = TextAreaTheme(
     name="nord",
-    cursor_style=Style(color="#d8dee9", bgcolor="#2e3440"),
-    cursor_line_style=Style(bgcolor="#ebcb8b"),
+    cursor_style=Style(color="#2e3440", bgcolor="#d8dee9"),
+    cursor_line_style=Style(bgcolor="#3b4252"),
 )
 
 
