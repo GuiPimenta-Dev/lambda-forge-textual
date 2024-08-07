@@ -85,13 +85,28 @@ Underline > .underline--bar {
     color: $cyan;
 }
 
-Input, Select, TextArea {
-  border-title-align: right;
-  border-title-style: bold;
-  border-title-color: white;
-  border-title-background: $accent;
+Input, TextArea {
+
+  & {
+    border: tall $background-light-1;
+  }
+
+  &:focus {
+    border: tall $blue;
+  }
+
+  &, &:focus {
+    background: $background;
+    border-title-align: right;
+    border-title-style: bold;
+    border-title-color: $foreground;
+    border-title-background: $blue;
+  }
 }
 
+TextArea .text-area-gutter {
+  background: red;
+}
 
 LogStream > OptionList {
 
