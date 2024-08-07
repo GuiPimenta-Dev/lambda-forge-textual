@@ -5,10 +5,6 @@ from textual.widget import Widget
 from rich.table import Table
 from forge_tui.api import Forge
 
-# from textual.app import ComposeResult, on
-# from textual.events import Resize
-# from textual.widgets import DataTable
-
 forge = Forge()
 
 
@@ -61,24 +57,3 @@ class ServerTable(Widget, can_focus=True):
 
     def action_refresh_servers(self):
         self.refresh()
-
-    # @on(Resize)
-    # def _resize(self, event: Resize) -> None:
-    #     self.refresh_table()
-    #
-    # @property
-    # def table(self) -> DataTable:
-    #     return self.query_one(DataTable)
-    #
-    # def refresh_table(self):
-    #     width = self.size.width
-    #     for column in self.COLUMNS:
-    #         self.table.add_column(column, width=width // len(self.COLUMNS))
-    #
-    #     self.refresh()
-    #
-    # def on_mount(self) -> None:
-    #     self.refresh_table()
-    #
-    # def compose(self) -> ComposeResult:
-    #     yield DataTable(cursor_type="row")
