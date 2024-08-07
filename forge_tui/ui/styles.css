@@ -63,9 +63,27 @@ ServerTable {
   .row-trigger {
     color: $foreground;
   }
-
 }
 
+Tab {
+    color: $foreground;
+}
+Tab.-active {
+    text-style: bold;
+    color: $blue;
+}
+Tab.-active:hover {
+    color: $blue;
+}
+
+/* Tabs:focus .underline--bar { */
+/*     background: $cyan 20%; */
+/* } */
+
+Underline > .underline--bar {
+    background: $background-light-1;
+    color: $cyan;
+}
 
 Input, Select, TextArea {
   border-title-align: right;
