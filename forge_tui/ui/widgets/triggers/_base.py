@@ -7,7 +7,11 @@ from ._trigger_submit import TriggerSubmit
 
 
 class TriggerBaseContainer(Widget):
-    pass
+    DEFAULT_CSS = """
+    TriggerBaseContainer {
+        height: 1fr;
+    }
+    """
 
 
 class TriggerBaseWidget(Static):
