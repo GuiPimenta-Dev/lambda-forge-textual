@@ -121,6 +121,26 @@ ResultWindow {
   }
 }
 
+Footer {
+  background: $background;
+  color: $blue;
+}
+
+FooterKey {
+  background: $background;
+
+  .footer-key--key {
+    color: $cyan;
+  }
+  .footer-key--description {
+    color: $foreground;
+  }
+
+  .footer-key--description {
+      padding: 0 1 0 1;
+  }
+}
+
 
 * {
   scrollbar-size: 0 1;
