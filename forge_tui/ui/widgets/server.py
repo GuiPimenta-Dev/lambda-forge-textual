@@ -1,4 +1,5 @@
 from rich.console import RenderableType
+from textual.binding import Binding
 from textual.widget import Widget
 from rich.table import Table
 from forge_tui.api import Forge
@@ -10,7 +11,7 @@ from forge_tui.api import Forge
 forge = Forge()
 
 
-class ServerTable(Widget):
+class ServerTable(Widget, can_focus=True):
     DEFAULT_CSS = """
     ServerTable {
         height: auto;
@@ -19,9 +20,11 @@ class ServerTable(Widget):
 
     COLUMNS = ["Name", "Service", "Type", "Trigger"]
     RATIOS = [None, None, None, 1]
+    BINDINGS = [
+        Binding("r", "refresh_servers", "Refresh Servers"),
+    ]
 
     def render(self) -> RenderableType:
-
         table = Table(expand=True)
         table.show_lines = True
 
@@ -32,6 +35,12 @@ class ServerTable(Widget):
             table.add_row(*row)
 
         return table
+
+    def on_show(self):
+        self.focus()
+
+    def action_refresh_servers(self):
+        self.refresh()
 
     # @on(Resize)
     # def _resize(self, event: Resize) -> None:
