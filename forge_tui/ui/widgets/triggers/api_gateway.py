@@ -1,5 +1,7 @@
 from textual.app import ComposeResult
 from textual.widgets import Input, Select, TextArea
+
+from forge_tui.ui.widgets.text_area_theme import get_text_area
 from ._base import TriggerBaseWidget, TriggerBaseContainer
 
 
@@ -23,9 +25,9 @@ class ApiGatewayContainer(TriggerBaseContainer):
         yield Select(options=[(i, i) for i in self.METHODS], id="method")
         yield Input(id="url")
 
-        yield TextArea.code_editor(text="{}", language="json", id="query")
-        yield TextArea.code_editor(text="{}", language="json", id="body")
-        yield TextArea.code_editor(text="{}", language="json", id="headers")
+        yield get_text_area("query")
+        yield get_text_area("body")
+        yield get_text_area("headers")
 
 
 class ApiGateway(TriggerBaseWidget):

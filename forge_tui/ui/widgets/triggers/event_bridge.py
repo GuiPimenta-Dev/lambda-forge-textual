@@ -1,5 +1,7 @@
 from textual.app import ComposeResult
-from textual.widgets import Input, TextArea
+from textual.widgets import Input
+
+from forge_tui.ui.widgets.text_area_theme import get_text_area
 from ._base import TriggerBaseWidget, TriggerBaseContainer
 
 
@@ -14,7 +16,7 @@ class EventBridgeContainer(TriggerBaseContainer):
 
     def compose(self) -> ComposeResult:
         yield Input(id="bus_name")
-        yield TextArea.code_editor(text="{}", language="json", id="message")
+        yield get_text_area("message")
 
 
 class EventBridge(TriggerBaseWidget):

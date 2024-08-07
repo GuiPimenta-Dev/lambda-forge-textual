@@ -1,6 +1,7 @@
 from textual.app import ComposeResult
-from textual.widgets import Input, TextArea
+from textual.widgets import Input
 from ._base import TriggerBaseWidget, TriggerBaseContainer
+from ..text_area_theme import get_text_area
 
 
 class SNSContainer(TriggerBaseContainer):
@@ -19,8 +20,8 @@ class SNSContainer(TriggerBaseContainer):
 
     def compose(self) -> ComposeResult:
         yield Input(id="topic_arn")
-        yield TextArea.code_editor(text="{}", language="json", id="message")
-        yield TextArea.code_editor(text="{}", language="json", id="subject")
+        yield get_text_area("message")
+        yield get_text_area("subject")
 
 
 class SNS(TriggerBaseWidget):
