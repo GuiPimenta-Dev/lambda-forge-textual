@@ -94,12 +94,21 @@ Input, Select, TextArea {
 
 
 LogStream > OptionList {
+
+  background: $background;
+
     .option-list--option-highlighted {
-        background: $surface;
+        background: $background;
+        color: $blue;
+    }
+
+    .option-list--option-hover {
+        background: $background;
+        color: $blue;
     }
 
     &:focus {
-        border: tall $boost;
+        border: none;
     }
 }
 

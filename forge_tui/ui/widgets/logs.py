@@ -38,15 +38,15 @@ class SingleLog(Option):
                 resource = data["resource"]
                 path = data["path"]
 
-                method = Text(method, style="b green")
+                method = Text(method, style="b #a3be8c")
                 method.pad(1)
 
                 resource = (
-                    Text() + Text(" resource:", style="dim white") + Text(resource)
+                    Text() + Text(" resource:", style="dim #d8dee9") + Text(resource)
                 )
                 resource.pad(1)
 
-                path = Text() + Text(" path:", style="dim white") + Text(path)
+                path = Text() + Text(" path:", style="dim #d8dee9") + Text(path)
                 path.pad(1)
 
                 text = Text() + method + resource + path
@@ -69,7 +69,13 @@ class SingleLog(Option):
         if isinstance(prompt, str):
             prompt = Text(prompt)
 
-        self.set_prompt(Panel(prompt, box=box.ROUNDED))
+        self.set_prompt(
+            Panel(
+                prompt,
+                box=box.ROUNDED,
+                border_style=self.get_rich_style("option-item-border"),
+            )
+        )
 
     def toggle_display(self):
         self.tall = not self.tall
@@ -83,7 +89,7 @@ class LogStream(Widget):
     }
     """
 
-    COMPONENT_CLASSES = {"log-method-get"}
+    COMPONENT_CLASSES = {"log-method-get", "option-item-border"}
     BINDINGS = [
         Binding("c", "clear_logs", "Clear logs"),
     ]
