@@ -95,6 +95,9 @@ class LogStream(Widget):
     def compose(self) -> ComposeResult:
         yield OptionList()
 
+    def on_show(self):
+        self.query_one(OptionList).focus()
+
     @property
     def log_list(self) -> OptionList:
         return self.query_one(OptionList)
