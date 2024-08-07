@@ -30,7 +30,7 @@ ForgeHeader {
   }
 }
 
-OptionList {
+LogStream > OptionList {
     .option-list--option-highlighted {
         background: $surface;
     }
