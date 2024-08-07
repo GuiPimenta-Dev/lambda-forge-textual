@@ -156,6 +156,20 @@ FooterKey {
   }
 }
 
+Button {
+  border: tall $background;
+  background: $background-light-2;
+
+  &:hover {
+    background: $blue;
+    color: $foreground-light-2;
+  }
+
+  &:focus{
+    border: tall $blue;
+  }
+}
+
 
 * {
   scrollbar-size: 0 1;
