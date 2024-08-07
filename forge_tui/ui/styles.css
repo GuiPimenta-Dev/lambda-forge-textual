@@ -1,15 +1,71 @@
-/* $black1: #0E1116; */
-/* $black2: #171C24; */
-/*  */
-/* $white1: #E5E1EE; */
-/* $white2: #D8D2E6; */
-/*  */
-/* $red: #C81D25; */
-/* $yellow: #FDCA0E; */
-/* $pink: #F55EAD; */
-/* $cyan: #25AABF; */
-/* $blue: #1A6DAF; */
-/* $green: #99E1D9; */
+/* NORD THEME */
+
+$background: #2e3440;
+$background-light-1: #3b4252;
+$background-light-2: #434c5e;
+$background-light-3: #4c566a;
+
+$foreground: #d8dee9;
+$foreground-light-1: #e5e9f0;
+$foreground-light-2: #eceff4;
+
+$frost: #8fbcbb;
+$cyan: #88c0d0;
+$blue: #81a1c1;
+
+$red: #bf616a;
+$yellow: #ebcb8b;
+$orange: #d08770;
+$green: #a3be8c;
+$magenta: #b48ead;
+
+ForgeHeader {
+  background: $background-light-1;
+
+  .title {
+    text-style: bold;
+    color: $cyan;
+  }
+
+  .subtitle {
+    text-style: italic;
+    color: $foreground 80%;
+  }
+}
+
+Screen, TabbedContent, TriggerBaseWidget {
+  background: $background;
+}
+
+
+ServerTable {
+  .table-header {
+    color: $blue;
+  }
+
+  .table-border {
+    color: $background-light-3;
+  }
+
+  .row-name {
+    color: $frost;
+  }
+
+  .row-service {
+    color: $cyan;
+  }
+
+  .row-type {
+    color: $magenta;
+
+  }
+
+  .row-trigger {
+    color: $foreground;
+  }
+
+}
+
 
 Input, Select, TextArea {
   border-title-align: right;
@@ -18,17 +74,6 @@ Input, Select, TextArea {
   border-title-background: $accent;
 }
 
-ForgeHeader {
-  background: $background;
-
-  .title {
-    color: white;
-  }
-
-  .subtitle {
-    color: grey;
-  }
-}
 
 LogStream > OptionList {
     .option-list--option-highlighted {
