@@ -12,8 +12,8 @@ class IndexScreen(Screen):
     DEFAULT_CSS = """
     IndexScreen {
         layout: grid;
-        grid-size: 1 3;
-        grid-rows: 4 1fr 1;
+        grid-size: 1 2;
+        grid-rows: 4 1fr;
     }
     """
 
