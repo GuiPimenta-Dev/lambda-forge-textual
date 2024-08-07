@@ -115,4 +115,10 @@ ResultWindow {
 
 * {
   scrollbar-size: 0 1;
+  scrollbar-background: $background-light-3;
+  scrollbar-background-hover: $background-light-1;
+  scrollbar-background-active: $background-light-2;
+  scrollbar-color: $blue;
+  scrollbar-color-active: $cyan;
+  scrollbar-color-hover: $cyan;
 }
