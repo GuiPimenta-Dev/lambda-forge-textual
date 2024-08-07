@@ -129,10 +129,25 @@ LogStream > OptionList {
 
 ResultWindow {
   background: $background;
-  border: tall $accent;
-  
-  OptionList:focus {
+  border: heavy $blue;
+
+  OptionList {
+
+    &, &:focus {
+
+    background: $background;
     border: tall $background;
+
+    .option-list--option-highlighted {
+      color: $blue;
+      background: $background;
+    }
+
+    .option-list--option-hover {
+      color: $frost;
+      background: $background;
+    }
+    }
   }
 }
 
