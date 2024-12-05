@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "forge_tui"
+version = "0.1.0"
+description = "TUI for lambda forge"
+authors = ["Kraanzu <kraanzu@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+textual = "^0.75.1"
+
+
+textual-serve = "^1.0.3"
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+forge-tui = 'forge_tui.__init__:launch_forge_tui'
